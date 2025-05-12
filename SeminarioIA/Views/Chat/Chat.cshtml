@@ -1,0 +1,20 @@
+﻿<h1>💬 MindBuddy - Asistente Emocional</h1>
+
+<form asp-action="SendMessage" method="post">
+    <div>
+        <label for="Text">¿Cómo te sientes hoy?</label>
+        <br />
+        <textarea name="Text" id="Text" rows="4" cols="50" placeholder="Escribe aquí...">@Model?.Text</textarea>
+    </div>
+    <br />
+    <button type="submit" style="padding: 10px 20px;">Enviar</button>
+</form>
+
+@if (Model?.Response != null)
+{
+    <div style="margin-top: 20px;">
+        <h4>🤖 Respuesta de MindBuddy:</h4>
+        <p><strong>Emoción detectada:</strong> @Model.Emotion</p>
+        <p><strong>Mensaje:</strong> @Model.Response</p>
+    </div>
+}
