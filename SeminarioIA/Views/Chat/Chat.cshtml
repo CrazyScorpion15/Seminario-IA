@@ -1,13 +1,13 @@
-﻿<h1>💬 MindBuddy - Asistente Emocional</h1>
+﻿<link rel="stylesheet" href="~/css/Home.css"/>
+<h1>💬 MindBuddy - Asistente Emocional</h1>
 
-<form asp-action="SendMessage" method="post">
+<form asp-action="EnviarMensaje" method="post">
     <div>
         <label for="Text">¿Cómo te sientes hoy?</label>
-        <br />
-        <textarea name="Text" id="Text" rows="4" cols="50" placeholder="Escribe aquí...">@Model?.Text</textarea>
+        <br />             
+        <textarea style="margin-top: 10px" name="Text" id="Text" rows="4" cols="50" placeholder="Expresate libremente...">@Model?.Text</textarea>
     </div>
-    <br />
-    <button type="submit" style="padding: 10px 20px;">Enviar</button>
+    <button type="submit" class="botones" style="padding: 5px 10px;">Enviar</button>
 </form>
 
 @if (Model?.Response != null)
