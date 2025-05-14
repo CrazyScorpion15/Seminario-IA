@@ -4,6 +4,6 @@
     {
         public string Texto { get; set; }
         public string Emocion { get; set; }
-        public string Response { get; set; }
+        public string Respuesta { get; set; }
     }
 }

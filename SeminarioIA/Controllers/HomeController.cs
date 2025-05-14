@@ -15,6 +15,7 @@ namespace SeminarioIA.Controllers
 
         public IActionResult Index()
         {
+            HttpContext.Session.Remove("UsuarioChat");
             return View();
         }
         
