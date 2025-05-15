@@ -17,7 +17,10 @@
         <label>Teléfono de emergencia:</label><br />
         <input type="number" name="numeroEmergencia" required /><br /><br />
 
-        <button type="submit">Iniciar Chat</button>
+        <label>Correo de emergencia:</label><br />
+        <input type="text" name="correoEmergencia" required /><br /><br />
+
+        <button class="botones" type="submit">Iniciar Chat</button>
     </form>
 }
 else
@@ -26,7 +29,7 @@ else
     <h2>Bienvenido, @usuario.Nombre</h2>
 
     <div id="chat">
-        <div id="chat-box" style="border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: auto; background: #f9f9f9; margin-bottom: 10px;">
+        <div id="chat-box" style="border: 1px solid #ccc; padding: 10px; height: 500px; overflow-y: auto; background: #f9f9f9; margin-bottom: 10px;">
             <!-- Aquí se agregan los mensajes -->
         </div>
 
