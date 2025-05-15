@@ -45,15 +45,21 @@ else
 
             input.value = "";
 
-            const res = await fetch('/Chat/EnvioMensaje', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ text: mensaje })
-            });
+            try {
+                const response = await fetch('/Chat/EnvioMensaje', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ Texto: mensaje }) // Nota: 'Texto' debe coincidir con el nombre de la propiedad en tu modelo C#
+                });
 
-            const data = await res.json();
-            chatBox.innerHTML += `<p><strong>MindBuddy [${data.emocion}]:</strong> ${data.respuesta}</p>`;
-            chatBox.scrollTop = chatBox.scrollHeight;
+                const data = await response.json();
+
+                chatBox.innerHTML += `<p><strong>MindBuddy [${data.emocion}]:</strong> ${data.respuesta}</p>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            } catch (error) {
+                chatBox.innerHTML += `<p style="color:red;"><strong>❌ Error al comunicarse con el servidor.</strong></p>`;
+            }
         }
     </script>
+
 }

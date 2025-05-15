@@ -50,25 +50,26 @@ namespace SeminarioIA.Controllers
             try
             {
                 var client = _httpClientFactory.CreateClient();
-                var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(new { text = chat.Texto }), Encoding.UTF8, "application/json");
+                var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(new { text = chat.Texto }),
+                                                Encoding.UTF8, "application/json");
 
                 var response = await client.PostAsync("http://127.0.0.1:8000/analyze", content);
                 var responseBody = await response.Content.ReadAsStringAsync();
 
                 using var doc = JsonDocument.Parse(responseBody);
-                chat.Emocion = doc.RootElement.GetProperty("emocion").GetString();
-                chat.Respuesta = doc.RootElement.GetProperty("respuesta").GetString();
+                chat.Emocion = doc.RootElement.GetProperty("emotion").GetString();
+                chat.Respuesta = doc.RootElement.GetProperty("response").GetString();
 
                 return Json(new { emocion = chat.Emocion, respuesta = chat.Respuesta });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 chat.Emocion = "No hay emociones";
                 chat.Respuesta = "No existe respuesta";
                 return Json(new { emocion = chat.Emocion, respuesta = chat.Respuesta });
             }
-            
         }
+
 
     }
 }
